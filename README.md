@@ -24,7 +24,7 @@ src='https://i.imgur.com/LyHic3i.gif'/></a>
 
   
 
-<a href="https://github.com/corazon/corazon-md/fork"><img src="https://img.shields.io/badge/CLICK%20HERE-purple" alt="FORK CORAZON" width="150"></a>
+<a href="https://github.com/sime-o/Simeo-md/fork"><img src="https://img.shields.io/badge/CLICK%20HERE-purple" alt="FORK simeo" width="150"></a>
 
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
@@ -37,7 +37,7 @@ src='https://i.imgur.com/LyHic3i.gif'/></a>
 ###  𝐃𝐄𝐏𝐋𝐎𝐘 𝐎𝐍 𝐇𝐄𝐑𝐎𝐊𝐔:
 
 
- ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https://github.com/corazon/CORAZON-MD&template=https://github.com/corazon/CORAZON-MD.git)***
+ ***[![Tap to deploy on heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?button-url=https://github.com/sime-o/Simeo&template=https://github.com/sime-o/Simeo.git)***
 
 <br>
 
@@ -48,7 +48,45 @@ src='https://i.imgur.com/LyHic3i.gif'/></a>
 **𝗛𝗢𝗦𝗧 𝗢𝗡 𝗗𝗜𝗦𝗖𝗢𝗥𝗗**
 <details>
 <summary>CLICK FOR MORE</summary>
-<a href="https://github.com/corazon/CORAZON-MD/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/DOWNLOAD%20FILES-yellow" alt="Rainhost Files" width="150"></a>
+<a href="https://github.com/sime-o/o/Simeo/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/DOWNLOAD%20FILES-yellow" alt="Rainhost Files" width="150"></a>
+  
+<a href="https://bot-hosting.net/?aff=1259151615210819614"><img src="https://img.shields.io/badge/SIGNUP%20&%20DEPLOY-gold" alt="Scalingo Deploy" width="150"></a>
+</details
+
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+
+
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+## 𝗦𝗨𝗣𝗣𝗢𝗥𝗧 𝗨𝗦 𝗕𝗬 𝗝𝗢𝗜𝗡𝗜𝗡𝗚 𝗧𝗛𝗘𝗦𝗘 𝗟𝗜𝗡𝗞𝗦
+
+**𝗚𝗿𝗼𝘂𝗽**
+- <a href="https://chat.whatsapp.com/DvXonepPp1XBPOYIBziTl1" target="_blank">
+    <img alt="CLICK HERE" src="https://img.shields.io/badge/ JOIN OUR WHATSAPP GROUP  -25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
+  </a>
+
+
+**𝗖𝗵𝗮𝗻𝗻𝗲𝗹**
+<p align="centre">
+  <a href="https://whatsapp.com/channel/0029Vaan9TF9Bb62l8wpoD47">
+    <img align="left" alt="SIEGRIN | Whastapp" width="86px" src="https://raw.githubusercontent.com/PikaBotz/My_Personal_Space/main/Images/AnyaBot_pics/Anya_v2/Whatsapp.svg" />
+  
+
+   
+   <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+
+
+Enjoy the diverse features of CORAZON-MD to enhance your Whatsapp more enjoyable
+
+
+### Credits to:
+- [FortunaMokaya](https://github.com/Fortunatusmokaya) for the founder of this bot's base
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
+<a><img src='https://i.imgur.com/LyHic3i.gifSimeo/archive/refs/heads/main.zip"><img src="https://img.shields.io/badge/DOWNLOAD%20FILES-yellow" alt="Rainhost Files" width="150"></a>
   
 <a href="https://bot-hosting.net/?aff=1259151615210819614"><img src="https://img.shields.io/badge/SIGNUP%20&%20DEPLOY-gold" alt="Scalingo Deploy" width="150"></a>
 </details
