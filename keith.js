@@ -33,11 +33,11 @@ const antibotgc = require('./Functions/antibot');
 const masterEval = require('./Functions/masterEval');
 
 const {
-  presence, autoread, botname, mode, prefix, mycode, author, packname,
+  presence, autoread, botname, mode, prefix, mycode, author, packname
   dev, gcpresence, antionce, permit, antitag, antibad, antibot, antilink, antidelete
 } = require('./settings');
 
-module.exports = Keith = async (client, m, chatUpdate, message, store) => {
+module.exports = Corazon = async (client, m, chatUpdate, message, store) => {
   try {
     let body = m.mtype === "conversation" ? m.message.conversation :
                m.mtype === "imageMessage" ? m.message.imageMessage.caption :
@@ -47,11 +47,11 @@ module.exports = Keith = async (client, m, chatUpdate, message, store) => {
       ? m.message.extendedTextMessage.contextInfo.mentionedJid
       : [];
 
-    let msgKeith = m.message.extendedTextMessage?.contextInfo?.quotedMessage;
+    let msgcorazon = m.message.extendedTextMessage?.contextInfo?.quotedMessage;
     let budy = typeof m.text === "string" ? m.text : "";
 
     const timestamp = speed();
-    const Keithspeed = speed() - timestamp;
+    const corazonspeed = speed() - timestamp;
 
     const cmd = body.startsWith(prefix);
     const args = body.trim().split(/ +/).slice(1);
@@ -71,11 +71,10 @@ module.exports = Keith = async (client, m, chatUpdate, message, store) => {
       }
       return admins || [];
     };
-
-    const keizzah = m.quoted || m;
-    const quoted = keizzah.mtype === 'buttonsMessage' ? keizzah[Object.keys(keizzah)[1]] :
-                  keizzah.mtype === 'templateMessage' ? keizzah.hydratedTemplate[Object.keys(keizzah.hydratedTemplate)[1]] :
-                  keizzah.mtype === 'product' ? keizzah[Object.keys(keizzah)[0]] : m.quoted ? m.quoted : m;
+    const corazon = m.quoted || m;
+    const quoted = corazon.mtype === 'buttonsMessage' ? corazon[Object.keys(corazon)[1]] :
+                  corazon.mtype === 'templateMessage' ? corazon.hydratedTemplate[Object.keys(corazon.hydratedTemplate)[1]] :
+                  corazon.mtype === 'product' ? corazon[Object.keys(corazon)[0]] : m.quoted ? m.quoted : m;
 
     const color = (text, color) => {
       return color ? chalk.keyword(color)(text) : chalk.green(text);
@@ -84,22 +83,22 @@ module.exports = Keith = async (client, m, chatUpdate, message, store) => {
     const mime = quoted.mimetype || "";
     const qmsg = quoted;
 
-    const DevKeith = dev.split(",");
-    const Owner = DevKeith.map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender);
+    const DevCorazon = dev.split(",");
+    const Owner = DevCorazon.map(v => v.replace(/[^0-9]/g, "") + "@s.whatsapp.net").includes(m.sender);
 
     const groupMetadata = m.isGroup ? await client.groupMetadata(m.chat).catch(() => {}) : "";
     const groupName = m.isGroup && groupMetadata ? groupMetadata.subject : "";
     const participants = m.isGroup && groupMetadata ? groupMetadata.participants : [];
     const groupAdmin = m.isGroup ? getGroupAdmins(participants) : [];
-    const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : false;
-    const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : false;
+    const isBotAdmin = m.isGroup ? groupAdmin.includes(botNumber) : no;
+    const isAdmin = m.isGroup ? groupAdmin.includes(m.sender) : no;
 
     const IsGroup = m.chat?.endsWith("@g.us");
 
     const context = {
       client, m, text, isBotMessage, message, Owner, chatUpdate, store, isBotAdmin, isAdmin, IsGroup,
-      participants, pushname, body, budy, totalCommands, args, mime, qmsg, msgKeith, botNumber, itsMe, packname,
-      author, generateProfilePicture, groupMetadata, Keithspeed, mycode, fetchJson, exec, antibad, getRandom, UploadFileUgu,
+      participants, pushname, body, budy, totalCommands, args, mime, qmsg, msgCorazon, botNumber, itsMe, packname,
+      author, generateProfilePicture, groupMetadata, Corazonspeed, mycode, fetchJson, exec, antibad, getRandom, UploadFileUgu,
       TelegraPh, prefix, cmd, botname, mode, gcpresence, antibot, permit, antitag, antilink, antidelete, antionce, fetchBuffer,
       store, uploadtoimgur, chatUpdate, ytmp3, getGroupAdmins, Tag
     };
@@ -108,7 +107,7 @@ module.exports = Keith = async (client, m, chatUpdate, message, store) => {
       return;
     }
 
-    if (m.chat.endsWith('@s.whatsapp.net') && cmd && permit === 'true' && !Owner) {
+    if (m.chat.endsWith('@s.whatsapp.net') && cmd && permit === 'yes' && !Owner) {
       await m.reply("Access denied");
       return;
     }
