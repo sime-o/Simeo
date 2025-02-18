@@ -1,12 +1,12 @@
 const events = process.env.EVENTS || 'false';
-const botname = process.env.BOTNAME || 'KEITH-MD';
+const botname = process.env.BOTNAME || 'CORAZON-MD';
 
-const Events = async (client, keizzah) => {
+const Events = async (client, Corazon) => {
     const Myself = await client.decodeJid(client.user.id);
 
     try {
-        let metadata = await client.groupMetadata(keizzah.id);
-        let participants = keizzah.participants;
+        let metadata = await client.groupMetadata(corazon.id);
+        let participants = corazon.participants;
         let desc = metadata.desc || "No Description";
 
         for (let num of participants) {
@@ -18,43 +18,43 @@ const Events = async (client, keizzah) => {
                 dpuser = "https://i.imgur.com/iEWHnOH.jpeg";
             }
 
-            if (keizzah.action == "add") {
+            if (corazon.action == "add") {
                 let userName = num;
 
-                let Welcometext = ` Hey  @${userName.split("@")[0]} 👋\n\nWelcome to ${metadata.subject}.\n\nyou may read the group Description to avoid being removed  ${desc}\n\n*Regards keithkeizzah*.\n\nPowered by ${botname} .`;
-                if (events === 'true') {
-                    await client.sendMessage(keizzah.id, {
+                let Welcometext = ` Hey  @${userName.split("@")[0]} 👋\n\nWelcome to ${metadata.subject}.\n\nyou may read the group Description to avoid being removed  ${desc}\n\n*Regards sime-o*.\n\nPowered by ${botname} .`;
+                if (events === 'yes') {
+                    await client.sendMessage(corazon.id, {
                         image: { url: dpuser },
                         caption: Welcometext,
                         mentions: [num],
                     });
                 }
-            } else if (keizzah.action == "remove") {
+            } else if (corazon.action == "remove") {
                 let userName2 = num;
 
                 let Lefttext = `
           Goodbye to this idiot @${userName2.split("@")[0]} you will be highly remembered comrade`;
-                if (events === 'true') {
-                    await client.sendMessage(keizzah.id, {
+                if (events === 'yes') {
+                    await client.sendMessage(corazon.id, {
                         image: { url: dpuser },
                         caption: Lefttext,
                         mentions: [num],
                     });
                 }
-            } else if (keizzah.action == "demote" && events === 'true') {
+            } else if (corazon.action == "demote" && events === 'yes') {
                 await client.sendMessage(
-                    keizzah.id,
+                    corazon.id,
                     {
-                        text: `@${(keizzah.author).split("@")[0]}, has demoted @${(keizzah.participants[0]).split("@")[0]} from admin 👀`,
-                        mentions: [keizzah.author, keizzah.participants[0]]
+                        text: `@${(corazon.author).split("@")[0]}, has demoted @${(corazon.participants[0]).split("@")[0]} from admin 👀`,
+                        mentions: [corazon.author, corazon.participants[0]]
                     }
                 );
-            } else if (keizzah.action == "promote" && events === 'true') {
+            } else if (corazon.action == "promote" && events === 'yes') {
                 await client.sendMessage(
-                    keizzah.id,
+                    corazon.id,
                     {
-                        text: `@${(keizzah.author).split("@")[0]} has promoted @${(keizzah.participants[0]).split("@")[0]} to admin. 👀`,
-                        mentions: [keizzah.author, keizzah.participants[0]]
+                        text: `@${(corazon.author).split("@")[0]} has promoted @${(corazon.participants[0]).split("@")[0]} to admin. 👀`,
+                        mentions: [corazon.author, corazon.participants[0]]
                     }
                 );
             }
