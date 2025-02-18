@@ -1,5 +1,5 @@
 const {
-  default: keithConnect,
+  default: CorazonConnect,
   useMultiFileAuthState,
   DisconnectReason,
   fetchLatestBaileysVersion,
@@ -10,7 +10,7 @@ const {
   getContentType
 } = require("@whiskeysockets/baileys");
 
-function smsg(keithInstance, message, store) {
+function smsg(corazonInstance, message, store) {
   if (!message) {
     return message;
   }
@@ -24,12 +24,12 @@ function smsg(keithInstance, message, store) {
     message.chat = message.key.remoteJid;
     message.fromMe = message.key.fromMe;
     message.isGroup = message.chat.endsWith("@g.us");
-    message.sender = keithInstance.decodeJid(
-      message.fromMe && keithInstance.user.id || message.participant || message.key.participant || message.chat || ''
+    message.sender = corazonInstance.decodeJid(
+      message.fromMe && corazonInstance.user.id || message.participant || message.key.participant || message.chat || ''
     );
     
     if (message.isGroup) {
-      message.participant = keithInstance.decodeJid(message.key.participant) || '';
+      message.participant = corazonInstance.decodeJid(message.key.participant) || '';
     }
   }
 
@@ -72,8 +72,8 @@ function smsg(keithInstance, message, store) {
       message.quoted.id = message.msg.contextInfo.stanzaId;
       message.quoted.chat = message.msg.contextInfo.remoteJid || message.chat;
       message.quoted.isBaileys = message.quoted.id ? message.quoted.id.startsWith("BAE5") && message.quoted.id.length === 16 : false;
-      message.quoted.sender = keithInstance.decodeJid(message.msg.contextInfo.participant);
-      message.quoted.fromMe = message.quoted.sender === keithInstance.decodeJid(keithInstance.user.id);
+      message.quoted.sender = corazonInstance.decodeJid(message.msg.contextInfo.participant);
+      message.quoted.fromMe = message.quoted.sender === corazonInstance.decodeJid(corazonInstance.user.id);
       message.quoted.text = message.quoted.text || message.quoted.caption || message.quoted.conversation || message.quoted.contentText || message.quoted.selectedDisplayText || message.quoted.title || '';
       message.quoted.mentionedJid = message.msg.contextInfo ? message.msg.contextInfo.mentionedJid : [];
 
@@ -82,7 +82,7 @@ function smsg(keithInstance, message, store) {
         if (!message.quoted.id) {
           return false;
         }
-        let quotedMsg = await store.loadMessage(message.chat, message.quoted.id, keithInstance);
+        let quotedMsg = await store.loadMessage(message.chat, message.quoted.id, corazonInstance);
         return exports.smsg(keithInstance, quotedMsg, store);
       };
 
@@ -97,15 +97,15 @@ function smsg(keithInstance, message, store) {
       });
 
       // Helper functions for deleting and forwarding quoted messages
-      message.quoted["delete"] = () => keithInstance.sendMessage(message.quoted.chat, { 'delete': quotedMessageFakeObj.key });
-      message.quoted.copyNForward = (toChat, forceForward = false, options = {}) => keithInstance.copyNForward(toChat, quotedMessageFakeObj, forceForward, options);
-      message.quoted.download = () => keithInstance.downloadMediaMessage(message.quoted);
+      message.quoted["delete"] = () => corazonInstance.sendMessage(message.quoted.chat, { 'delete': quotedMessageFakeObj.key });
+      message.quoted.copyNForward = (toChat, forceForward = false, options = {}) => corazonInstance.copyNForward(toChat, quotedMessageFakeObj, forceForward, options);
+      message.quoted.download = () => corazonInstance.downloadMediaMessage(message.quoted);
     }
   }
 
   // Handle URL in the message
   if (message.msg.url) {
-    message.download = () => keithInstance.downloadMediaMessage(message.msg);
+    message.download = () => corazonInstance.downloadMediaMessage(message.msg);
   }
 
   // Extract main text content from the message
@@ -114,16 +114,16 @@ function smsg(keithInstance, message, store) {
   // Reply function
   message.reply = (replyText, replyTo = message.chat, options = {}) => {
     if (Buffer.isBuffer(replyText)) {
-      return keithInstance.sendMedia(replyTo, replyText, "file", '', message, { ...options });
+      return corazonInstance.sendMedia(replyTo, replyText, "file", '', message, { ...options });
     }
-    return keithInstance.sendText(replyTo, replyText, message, { ...options });
+    return corazonInstance.sendText(replyTo, replyText, message, { ...options });
   };
 
   // Function to copy the message
-  message.copy = () => exports.smsg(keithInstance, messageInfo.fromObject(messageInfo.toObject(message)));
+  message.copy = () => exports.smsg(corazonInstance, messageInfo.fromObject(messageInfo.toObject(message)));
 
   // Function to forward the message
-  message.copyNForward = (toChat = message.chat, forceForward = false, options = {}) => keithInstance.copyNForward(toChat, message, forceForward, options);
+  message.copyNForward = (toChat = message.chat, forceForward = false, options = {}) => corazonInstance.copyNForward(toChat, message, forceForward, options);
 
   return message;
 }
