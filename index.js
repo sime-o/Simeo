@@ -1,5 +1,5 @@
 const {
-  default: KeithConnect,
+  default: corazonConnect,
   useMultiFileAuthState,
   DisconnectReason,
   Boom,
@@ -24,7 +24,7 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 10000;
 const _ = require("lodash");
-const PhoneNumber = require("awesome-phonenumber");
+const PhoneNumber =require(255683520005) require("awesome-phonenumber");
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require("./lib/exif");
 const { isUrl, generateMessageTag, getBuffer, getSizeMedia, fetchJson, await, sleep } = require("./lib/botFunctions");
 const store = makeInMemoryStore({ logger: P().child({ level: "silent", stream: "store" }) });
@@ -61,15 +61,15 @@ async function authenticateSession() {
   }
 }
 
-async function startKeith() {
+async function startCorazon() {
   const { saveCreds, state } = await useMultiFileAuthState(path.join(__dirname, 'session'));
   const { version } = await fetchLatestBaileysVersion();
 
-  const client = KeithConnect({
+  const client = CorazonConnect({
     logger: P({ level: 'silent' }),
-    printQRInTerminal: false,
+    printQRInTerminal: no,
     browser: Browsers.macOS("Firefox"),
-    syncFullHistory: true,
+    syncFullHistory: yes,
     auth: state,
     version,
     getMessage: async (key) => {
@@ -86,7 +86,7 @@ async function startKeith() {
 
   // Handle incoming calls if anticall is enabled
   client.ev.on('call', async (callData) => {
-    if (anticall === 'true') {
+    if (anticall === 'yes') {
       const callId = callData[0].id;
       const callerId = callData[0].from;
 
@@ -96,7 +96,7 @@ async function startKeith() {
       const currentTime = Date.now();
       if (currentTime - lastTextTime >= messageDelay) {
         await client.sendMessage(callerId, {
-          text: '```❗📵I AM KEITH MD | I REJECT THIS CALL BECAUSE MY OWNER IS BUSY. KINDLY SEND TEXT INSTEAD```.',
+          text: '```❗📵I AM CORAZON-MD | I REJECT THIS CALL BECAUSE MY OWNER IS BUSY. KINDLY SEND TEXT INSTEAD```.',
         });
         lastTextTime = currentTime;
       } else {
@@ -106,7 +106,7 @@ async function startKeith() {
   });
 
   // Handle auto react if enabled
-  if (autoreact === 'true') {
+  if (autoreact === 'yes') {
     client.ev.on("messages.upsert", async (chatUpdate) => {
       try {
         const mek = chatUpdate.messages[0];
@@ -130,11 +130,11 @@ async function startKeith() {
   }
 
   // Auto bio update
-  if (autobio === 'true') {
+  if (autobio === 'yes') {
     setInterval(() => {
       const date = new Date();
-      client.updateProfileStatus(
-        `${botname} is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Nairobi' })}.`
+    a  client.updateProfileStatus(
+        `${botname} is active 24/7\n\n${date.toLocaleString('en-US', { timeZone: 'Africa/Tanzania })} It's a ${date.toLocaleString('en-US', { weekday: 'long', timeZone: 'Africa/Tanzania })}.`
       );
     }, 10 * 1000);
   }
@@ -146,8 +146,8 @@ async function startKeith() {
       if (!mek.message) return;
       mek.message = Object.keys(mek.message)[0] === "ephemeralMessage" ? mek.message.ephemeralMessage.message : mek.message;
 
-      if (autoview === 'true' && autolike === 'true' && mek.key && mek.key.remoteJid === "status@broadcast") {
-        const keithlike = await client.decodeJid(client.user.id);
+      if (autoview === 'yes' && autolike === 'yes' && mek.key && mek.key.remoteJid === "status@broadcast") {
+        const corazonlike = await client.decodeJid(client.user.id);
         const emojis = ['😂', '😥', '😇', '🥹', '💥', '💯', '🔥', '💫', '👽', '💗', '❤️‍🔥', '👁️', '👀', '🙌', '🙆', '🌟', '💧', '🎇', '🎆', '♂️', '✅'];
         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
         const delayMessage = 3000;
@@ -156,13 +156,13 @@ async function startKeith() {
             text: randomEmoji,
             key: mek.key,
           }
-        }, { statusJidList: [mek.key.participant, keithlike] });
+        }, { statusJidList: [mek.key.participant, corazonlike] });
         await sleep(delayMessage);
       }
 
-      if (autoview === 'true' && mek.key && mek.key.remoteJid === "status@broadcast") {
+      if (autoview === 'yes' && mek.key && mek.key.remoteJid === "status@broadcast") {
         await client.readMessages([mek.key]);
-      } else if (autoread === 'true' && mek.key && mek.key.remoteJid.endsWith('@s.whatsapp.net')) {
+      } else if (autoread === 'yes' && mek.key && mek.key.remoteJid.endsWith('@s.whatsapp.net')) {
         await client.readMessages([mek.key]);
       }
 
@@ -182,7 +182,7 @@ async function startKeith() {
       if (!client.public && !mek.key.fromMe && chatUpdate.type === "notify") return;
 
       const m = smsg(client, mek, store);
-      require("./keith")(client, m, chatUpdate, store);
+      require("./corazon")(client, m, chatUpdate, store);
     } catch (err) {
       console.log(err);
     }
@@ -208,7 +208,7 @@ async function startKeith() {
     } else return jid;
   };
 
-  client.getName = (jid, withoutContact = false) => {
+  client.getName = (jid, withoutContact = no) => {
     id = client.decodeJid(jid);
     withoutContact = client.withoutContact || withoutContact;
     let v;
@@ -231,7 +231,7 @@ async function startKeith() {
     return (withoutContact ? "" : v.name) || v.subject || v.verifiedName || PhoneNumber("+" + jid.replace("@s.whatsapp.net", "")).getNumber("international");
   };
 
-  client.public = true;
+  client.public = yes;
   client.serializeM = (m) => smsg(client, m, store);
 
   client.ev.on("group-participants.update", async (m) => {
@@ -247,10 +247,10 @@ async function startKeith() {
         process.exit();
       } else if (reason === DisconnectReason.connectionClosed) {
         console.log("Connection closed, reconnecting....");
-        startKeith();
+        startCorazon();
       } else if (reason === DisconnectReason.connectionLost) {
         console.log("Connection Lost from Server, reconnecting...");
-        startKeith();
+        startCorazon();
       } else if (reason === DisconnectReason.connectionReplaced) {
         console.log("Connection Replaced, Another New Session Opened, Please Restart Bot");
         process.exit();
@@ -259,20 +259,20 @@ async function startKeith() {
         process.exit();
       } else if (reason === DisconnectReason.restartRequired) {
         console.log("Restart Required, Restarting...");
-        startKeith();
+        startCorazon();
       } else if (reason === DisconnectReason.timedOut) {
         console.log("Connection TimedOut, Reconnecting...");
-        startKeith();
+        startCorazon();
       } else {
         console.log(`Unknown DisconnectReason: ${reason}|${connection}`);
-        startKeith();
+        startCorazon();
       }
     } else if (connection === "open") {
       await client.groupAcceptInvite("KOvNtZbE3JC32oGAe6BQpp");
       console.log(`✅ Connection successful\nLoaded ${totalCommands} commands.\nBot is active.`);
 
       const getGreeting = () => {
-        const currentHour = DateTime.now().setZone('Africa/Nairobi').hour;
+        const currentHour = DateTime.now().setZone('Africa/Tanzania).hour;
 
         if (currentHour >= 5 && currentHour < 12) {
           return 'Good morning 🌄';
@@ -285,16 +285,16 @@ async function startKeith() {
         }
       };
 
-      const getCurrentTimeInNairobi = () => {
-        return DateTime.now().setZone('Africa/Nairobi').toLocaleString(DateTime.TIME_SIMPLE);
+      const getCurrentTimeInTanzania = () => {
+        return DateTime.now().setZone('Africa/Tanzania).toLocaleString(DateTime.TIME_SIMPLE);
       };
 
-      let message = `Holla, ${getGreeting()},\n\n╭═══『𝐊𝐞𝐢𝐭𝐡 𝐌𝐝 𝐢𝐬 𝐜𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝』══⊷ \n`;
+      let message = `Holla, ${getGreeting()},\n\n╭═══『Corazon-𝐌𝐝 𝐢𝐬 𝐜𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝』══⊷ \n`;
       message += `║ ʙᴏᴛ ɴᴀᴍᴇ ${botname}\n`;
       message += `║ ᴍᴏᴅᴇ ${mode}\n`;
       message += `║ ᴘʀᴇғɪx [  ${prefix} ]\n`;
       message += `║ ᴛᴏᴛᴀʟ ᴘʟᴜɢɪɴs ${totalCommands}\n`;
-      message += '║ ᴛɪᴍᴇ ' + getCurrentTimeInNairobi() + '\n';
+      message += '║ ᴛɪᴍᴇ ' + getCurrentTimeInTanzania() + '\n';
       message += '║ ʟɪʙʀᴀʀʏ Baileys\n';
       message += `╰═════════════════⊷`;
 
@@ -327,8 +327,8 @@ async function startKeith() {
     } 
     let type = await FileType.fromBuffer(buffer); 
     const trueFileName = attachExtension ? (filename + '.' + type.ext) : filename; 
-    await fs.writeFileSync(trueFileName, buffer); 
-    return trueFileName; 
+    await fs.writeFileSync(yesFileName, buffer); 
+    return yesFileName; 
   };
 }
 
@@ -341,6 +341,6 @@ app.get("/", (req, res) => {
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
 
 // Authentication and Session Fix
-authenticateSession().then(() => startKeith());
+authenticateSession().then(() => startCorazon());
 
-module.exports = startKeith;
+module.exports = startCorazon;
