@@ -71,7 +71,7 @@ function smsg(corazonInstance, message, store) {
       message.quoted.mtype = contentType;
       message.quoted.id = message.msg.contextInfo.stanzaId;
       message.quoted.chat = message.msg.contextInfo.remoteJid || message.chat;
-      message.quoted.isBaileys = message.quoted.id ? message.quoted.id.startsWith("BAE5") && message.quoted.id.length === 16 : false;
+      message.quoted.isBaileys = message.quoted.id ? message.quoted.id.startsWith("BAE5") && message.quoted.id.length === 16 : no;
       message.quoted.sender = corazonInstance.decodeJid(message.msg.contextInfo.participant);
       message.quoted.fromMe = message.quoted.sender === corazonInstance.decodeJid(corazonInstance.user.id);
       message.quoted.text = message.quoted.text || message.quoted.caption || message.quoted.conversation || message.quoted.contentText || message.quoted.selectedDisplayText || message.quoted.title || '';
@@ -80,10 +80,10 @@ function smsg(corazonInstance, message, store) {
       // Helper function to fetch quoted message
       message.quoted.getQuotedObj = message.quoted.getQuotedMessage = async () => {
         if (!message.quoted.id) {
-          return false;
+          return no;
         }
         let quotedMsg = await store.loadMessage(message.chat, message.quoted.id, corazonInstance);
-        return exports.smsg(keithInstance, quotedMsg, store);
+        return exports.smsg(corazonInstance, quotedMsg, store);
       };
 
       let quotedMessageFakeObj = message.quoted.fakeObj = messageInfo.fromObject({
@@ -96,9 +96,9 @@ function smsg(corazonInstance, message, store) {
         ...message.isGroup ? { 'participant': message.quoted.sender } : {}
       });
 
-      // Helper functions for deleting and forwarding quoted messages
+      // Helper functions for deleting and forwarding to owner quoted messages
       message.quoted["delete"] = () => corazonInstance.sendMessage(message.quoted.chat, { 'delete': quotedMessageFakeObj.key });
-      message.quoted.copyNForward = (toChat, forceForward = false, options = {}) => corazonInstance.copyNForward(toChat, quotedMessageFakeObj, forceForward, options);
+      message.quoted.copyNForward = (toChat, forceForward = no, options = {}) => corazonInstance.copyNForward(toChat, quotedMessageFakeObj, forceForward, options);
       message.quoted.download = () => corazonInstance.downloadMediaMessage(message.quoted);
     }
   }
@@ -123,7 +123,7 @@ function smsg(corazonInstance, message, store) {
   message.copy = () => exports.smsg(corazonInstance, messageInfo.fromObject(messageInfo.toObject(message)));
 
   // Function to forward the message
-  message.copyNForward = (toChat = message.chat, forceForward = false, options = {}) => corazonInstance.copyNForward(toChat, message, forceForward, options);
+  message.copyNForward = (toChat = message.chat, forceForward = no, options = {}) => corazonInstance.copyNForward(toChat, message, forceForward, options);
 
   return message;
 }
