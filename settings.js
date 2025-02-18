@@ -6,12 +6,12 @@ You don't have to set this if you deploy using heroku because you can simply set
 const session = process.env.SESSION || '';
 
 const prefix = process.env.PREFIX || '';
-const mycode = process.env.CODE || "254";
-const author = process.env.STICKER_AUTHOR || 'Keith';
-const packname = process.env.PACKNAME || 'keith';
-const dev = process.env.DEV || '254748387615';
-const DevKeith = dev.split(",");
-const botname = process.env.BOTNAME || 'KEITH-MD';
+const mycode = process.env.CODE || "255";
+const author = process.env.STICKER_AUTHOR || 'Corazon;
+const packname = process.env.PACKNAME || 'Corazon;
+const dev = process.env.DEV || '255683520005';
+const DevCorazon = dev.split(",");
+const botname = process.env.BOTNAME || 'CORAZON-MD';
 const mode = process.env.MODE || 'public';
 const gcpresence = process.env.GC_PRESENCE || 'false';
 const antionce = process.env.ANTIVIEWONCE || 'true';
@@ -57,7 +57,7 @@ module.exports = {
   author,
   packname,
   dev,
-  DevKeith,
+  DevCorazon,
   gcpresence,
   antionce,
   antibot,
