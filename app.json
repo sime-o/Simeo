@@ -1,10 +1,10 @@
 {
-  "name": "KEITH-MD",
+  "name": "CORAZON-MD",
   "description": "This is a simple whatsapp bot built with nodejs and baileys with MD support.",
   "keywords": [
     "bot",
     "whatsapp",
-    "keith",
+    "Corazon",
     "whatsapp-stickers",
     "anime",
     "whatsapp-bot",
@@ -14,126 +14,126 @@
     "baileys-md",
     "md-bot"
   ],
-  "website": "https://github.com/Keithkeizzah/KEITH-MD2#readme",
-  "repository": "https://github.com/Keithkeizzah/KEITH-MD2.git",
+  "website": "https://github.com/sime-o/Simeo2#readme",
+  "repository": "https://github.com/sime-o/Simeo2.git",
   "logo": "https://i.imgur.com/dAtHp2k.jpeg",
   "success_url": "/",
   "env": {
     "PREFIX": {
-      "description": "choose your prefix for keith. To prevent errors and confusion you must set a prefix",
+      "description": "choose your prefix for Corazon. To prevent errors and confusion you must set a prefix",
       "value": ".",
-      "required": true
+      "required": yes
     },
     "DEV": {
-      "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 254748387615, 254796299159 ",
-      "required": false
+      "description": "Put any phone numbers you want to be bot owner without + or spaces \",\" Ex: 255683520005, 255624660205 ",
+      "required": no
     },
     "API": {
       "description": "add your heroku api key here to be able to control config varses directly in your pm  ",
-      "required": true
+      "required": yes
 
     },
     "APPNAME": {
       "description": "repeat your heroku appname here",
-      "required": true
+      "required": yes
  
     },
     "ANTICALL": {
-      "description": "Type true if you want the bot to decline unnecessary calls ",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want the bot to decline unnecessary calls ",
+      "value": "yes",
+      "required": no
     },
     "PM_PERMIT": {
-      "description": "Type true if you want the bot to deny requests in your pm",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want the bot to deny requests in your pm",
+      "value": "yes",
+      "required": no
       },
     "ANTI_BAD_WORD": {
-      "description": "Type true if you want bot to automatically detect bad words and remove or block in your pm ",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically detect bad words and remove or block in your pm ",
+      "value": "yes",
+      "required": no
    
     },
     "CODE": {
-      "description": "Enter your country code without +. Example: 254 for Kenya. This will allow bot to detect and remove foreigners if commanded",
-      "value": "254",
-      "required": true
+      "description": "Enter your country code without +. Example: 255 for Tanzania. This will allow bot to detect and remove foreigners if commanded",
+      "value": "255",
+      "required": yes
     },
     "STICKER_AUTHOR": {
       "description": "Put your sticker author data",
-      "value": "Keith",
-      "required": false
+      "value": "Corazon",
+      "required": no
     },
     "STICKER_PACKNAME": {
       "description": "Put your sticker packname data",
-      "value": "Keizzah",
-      "required": false
+      "value": "Simeo",
+      "required": no
     },
     "BOTNAME": {
       "description": "Enter name for your bot,,you can change this.",
-      "value": "𝐊𝐄𝐈𝐓𝐇-𝐌𝐃",
-      "required": false
+      "value": "CORAZON-𝐌𝐃",
+      "required": no
     },
     "GC_PRESENCE": {
-      "description": "Type true if you want bot to show fake recording/typing in group chats.",
-      "required": false
+      "description": "Type yes if you want bot to show fake recording/typing in group chats.",
+      "required": no
     },
     "SESSION": {
       "description": "Paste the session id that you received in whatsapp after linking the bot. It's used for authentication.",
-      "required": true
+      "required": yes
     },
     "AUTOVIEW_STATUS": {
-      "description": "Type true if you want bot to automatically read all status update",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically read all status update",
+      "value": "yes",
+      "required": no
     },
 
 "EVENTS": {
       "description": "choose whether to allow bot to detect events in groups such as promote, demote, remove and add. If set to true bot will send welcome/goodbye messages and signal when somebody is promoted or demoted.",
-      "value": "false",
-      "required": true
+      "value": "no",
+      "required": yes
     },
 "AUTOBIO": {
-      "description": "Type true if you want bot to autoupdate it's bio constantly",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to autoupdate it's bio constantly",
+      "value": "yes",
+      "required": no
     },
 
 "ANTITAG": {
-      "description": "Type true if you want bot to automatically remove members who tagall or use hidetag.",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically remove members who tagall or use hidetag.",
+      "value": "yes",
+      "required": no
     },
 "ANTILINK": {
-      "description": "Type true if you want bot to automatically remove members who send link.",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically remove members who send link.",
+      "value": "yes",
+      "required": no
     },    
 "AUTOREACT": {
-      "description": "Type true if you want bot to automatically react to messages",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically react to messages",
+      "value": "yes",
+      "required": no
     },
 
  "AUTOLIKE_STATUS": {
-      "description": "Type true if you want bot to automatically like status updates, this will only work if AUTOVIEW_STATUS is true.",
-      "value": "true",
-      "required": false
+      "description": "Type yes if you want bot to automatically like status updates, this will only work if AUTOVIEW_STATUS is yes.",
+      "value": "yes",
+      "required": no
     },
     "AUTOREAD": {
-      "description": "Put here true if you want bot to automatically bluetick messages in private.",
-      "value": "false",
-      "required": false
+      "description": "Put here yes if you want bot to automatically bluetick messages in private.",
+      "value": "yes",
+      "required": no
     },
     "WA_PRESENCE": {
       "description": "This is your WhatsApp Presence Status: Here's how to set it up: Type *typing* if you want bot to show typing..., Type *recording* if you want bot to show recording..., Type *online* if you want bot to be always online, Leave this field blank if you want bot to show your actual presence.",
       "value": "typing",
-      "required": false
+      "required": no
     },
     "MODE": {
       "description": "Type private if you don't want other people to use the bot or public if you want everyone to access.",
       "value": "public",
-      "required": false
+      "required": no
     }
   },
   "buildpacks": [
