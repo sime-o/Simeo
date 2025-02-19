@@ -2,12 +2,7 @@
 <h1 align="center"> 𝐶𝑂𝑅𝐴𝑍𝑂𝑁-𝑀𝐷 </h1>
 
 
-<h1 align="center"> Surviving is winning frankline everything else is bullshit,fairy tales spun by people afraid to look life in the eye,do whatever it takes kid ,,survive 🤗🙏
-</h1>
-
-
-
-  <a href="https://ibb.co/N6NMDtn"><img src="https://telegra.ph/file/967c663a5978c545f78d6.jpg" alt="01" border="0" /></a>                     
+<h1 align="center"> Surviving is winning frankline everything else is bullshit,fairy tales spun by people afraid to look life in the eye,do whatever it takes kid ,,survive                     
 
 
 
